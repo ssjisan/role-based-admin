@@ -14,7 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import api from "../api/axios";
 import toast from "react-hot-toast";
-import { formatDateTime } from "../Components/lib/FormatDateTime";
+import { formatDateTime } from "../lib/FormatDateTime";
 
 export default function Users() {
   const [users, setUsers] = useState([]);

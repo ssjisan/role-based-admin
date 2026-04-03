@@ -15,6 +15,7 @@ import RoleSettings from "../Page/RoleSettings";
 import UserSettings from "../Page/UserSettings";
 import Users from "../Page/Users";
 import PermissionRoute from "./PermissionRoute";
+import Backup from "../Page/Backup";
 
 export default function MainRouters() {
   const { loading } = useContext(DataContext);
@@ -58,6 +59,7 @@ export default function MainRouters() {
               <Route path="/users" element={<Users />} />
               <Route path="/user-settings" element={<UserSettings />} />
               <Route path="/user-settings/:id" element={<UserSettings />} />
+              <Route path="/backup" element={<Backup />} />
             </Route>
           </Route>
         </Route>

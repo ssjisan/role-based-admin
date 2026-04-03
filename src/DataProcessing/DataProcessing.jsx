@@ -31,6 +31,7 @@ export default function DataProcessing({ children }) {
         // Auth Provider
         auth,
         setAuth,
+        loading,
         //Login Form Data Pass
         showPassword,
         handleClickShowPassword,
@@ -40,7 +41,6 @@ export default function DataProcessing({ children }) {
         setIsUserLoggedIn,
         handleLoginDetails,
         loginDetails,
-        loading,
       }}
     >
       {children}

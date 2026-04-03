@@ -12,7 +12,7 @@ export default function WelcomeCard() {
         display: "flex",
         alignItems: "center",
         flexDirection: forBelow676 && "column",
-        background: "url(https://res.cloudinary.com/dmyttqosa/image/upload/v1745492529/bg1_j85clb.png)",
+        background: "url(bg.png)",
         borderRadius: "16px",
         height: "100%",
         backgroundSize: "cover",
@@ -34,8 +34,8 @@ export default function WelcomeCard() {
             Welcome back <br /> {auth?.user?.name}!
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            Visit our website – Get tailored solutions that meet your needs.
-            Request your desired service today!
+            Everything you need is organized here — explore, manage, and stay
+            updated.
           </Typography>
         </Stack>
         <a href="https://insighttechglobal.com/" target="_blank">

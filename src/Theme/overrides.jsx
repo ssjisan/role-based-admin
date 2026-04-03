@@ -152,7 +152,7 @@ export function overrides(theme) {
     MuiTableCell: {
       styleOverrides: {
         head: {
-          backgroundColor: "#F4F6F8",
+          backgroundColor: "#f4f4f4",
           color: "#060415",
           fontWeight: "600",
           borderBottom: "none",
@@ -166,8 +166,8 @@ export function overrides(theme) {
         body: {
           color: "#212121",
           fontWeight: "500",
-          border: "none",
-          padding: "8px",
+          borderBottom: "1px solid rgba(145, 158, 171, 0.2)",
+          padding: "8px 12px",
         },
       },
     },

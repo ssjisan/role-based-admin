@@ -73,59 +73,69 @@ export default function Roles() {
         </Button>
       </Box>
 
-      {/* Table */}
-      <TableContainer>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Permissions</TableCell>
-              <TableCell>Created by</TableCell>
-              <TableCell>Updated by</TableCell>
-              <TableCell align="right">Actions</TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {roles.map((role) => (
-              <TableRow key={role._id}>
-                <TableCell>{role.name}</TableCell>
-
-                <TableCell>{role.permissions?.length || 0} Pages</TableCell>
-                <TableCell>
-                  {role?.createdBy?.name ? role?.createdBy?.name : "N/A"}
-                </TableCell>
-                <TableCell>
-                  {role?.updatedBy?.name ? role?.updatedBy?.name : "N/A"}
-                </TableCell>
-                <TableCell align="right">
-                  <IconButton
-                    color="primary"
-                    onClick={() => handleEdit(role._id)}
-                  >
-                    <EditIcon />
-                  </IconButton>
-
-                  <IconButton
-                    color="error"
-                    onClick={() => handleDelete(role._id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-
-            {roles.length === 0 && (
+      <Box
+        sx={{
+          boxShadow:
+            "0px 0px 2px rgba(145, 158, 171, 0.2), 0px 12px 24px -4px rgba(145, 158, 171, 0.12)",
+          borderRadius: "16px",
+          p: 2,
+          mt: 3,
+          mb: 3,
+        }}
+      >
+        <TableContainer>
+          <Table>
+            <TableHead>
               <TableRow>
-                <TableCell colSpan={4} align="center">
-                  No roles found
-                </TableCell>
+                <TableCell>Name</TableCell>
+                <TableCell>Permissions</TableCell>
+                <TableCell>Created by</TableCell>
+                <TableCell>Updated by</TableCell>
+                <TableCell align="right">Actions</TableCell>
               </TableRow>
-            )}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+
+            <TableBody>
+              {roles.map((role) => (
+                <TableRow key={role._id}>
+                  <TableCell>{role.name}</TableCell>
+
+                  <TableCell>{role.permissions?.length || 0} Pages</TableCell>
+                  <TableCell>
+                    {role?.createdBy?.name ? role?.createdBy?.name : "N/A"}
+                  </TableCell>
+                  <TableCell>
+                    {role?.updatedBy?.name ? role?.updatedBy?.name : "N/A"}
+                  </TableCell>
+                  <TableCell align="right">
+                    <IconButton
+                      color="primary"
+                      onClick={() => handleEdit(role._id)}
+                    >
+                      <EditIcon />
+                    </IconButton>
+
+                    <IconButton
+                      color="error"
+                      onClick={() => handleDelete(role._id)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+
+              {roles.length === 0 && (
+                <TableRow>
+                  <TableCell colSpan={4} align="center">
+                    No roles found
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
     </Box>
   );
 }

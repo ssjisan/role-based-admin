@@ -4,7 +4,6 @@ import {
   TextField,
   Button,
   Typography,
-  Paper,
   Table,
   TableBody,
   TableCell,
@@ -154,6 +153,67 @@ export default function RoleSettings() {
     }
   };
 
+  const handleSelectAllRow = (pageId) => (e) => {
+    const checked = e.target.checked;
+
+    setForm((prev) => {
+      let permissions = [...prev.permissions];
+
+      const index = permissions.findIndex(
+        (p) => p.page === pageId || p.page?._id === pageId,
+      );
+
+      if (index === -1) {
+        permissions.push({
+          page: pageId,
+          canView: checked,
+          canCreate: checked,
+          canUpdate: checked,
+          canDelete: checked,
+        });
+      } else {
+        permissions[index] = {
+          ...permissions[index],
+          canView: checked,
+          canCreate: checked,
+          canUpdate: checked,
+          canDelete: checked,
+        };
+      }
+
+      return { ...prev, permissions };
+    });
+  };
+
+  const isAllChecked = (pageId) => {
+    const perm = form.permissions.find(
+      (p) => p.page === pageId || p.page?._id === pageId,
+    );
+
+    if (!perm) return false;
+
+    return (
+      !!perm.canView && !!perm.canCreate && !!perm.canUpdate && !!perm.canDelete
+    );
+  };
+
+  const isIndeterminate = (pageId) => {
+    const perm = form.permissions.find(
+      (p) => p.page === pageId || p.page?._id === pageId,
+    );
+
+    if (!perm) return false;
+
+    const values = [
+      !!perm.canView,
+      !!perm.canCreate,
+      !!perm.canUpdate,
+      !!perm.canDelete,
+    ];
+
+    return values.some(Boolean) && !values.every(Boolean);
+  };
+
   return (
     <Box sx={{ p: 3 }}>
       <Typography variant="h6" mb={2}>
@@ -179,56 +239,73 @@ export default function RoleSettings() {
         />
       </Stack>
 
-      {/* Permissions Table */}
-      <TableContainer component={Paper} sx={{ mb: 3 }}>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Page</TableCell>
-              <TableCell>View</TableCell>
-              <TableCell>Create</TableCell>
-              <TableCell>Update</TableCell>
-              <TableCell>Delete</TableCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {pages.map((page) => (
-              <TableRow key={page._id}>
-                <TableCell>{page.name}</TableCell>
-
-                <TableCell>
-                  <Checkbox
-                    checked={isChecked(page._id, "canView")}
-                    onChange={handlePermissionChange(page._id, "canView")}
-                  />
-                </TableCell>
-
-                <TableCell>
-                  <Checkbox
-                    checked={isChecked(page._id, "canCreate")}
-                    onChange={handlePermissionChange(page._id, "canCreate")}
-                  />
-                </TableCell>
-
-                <TableCell>
-                  <Checkbox
-                    checked={isChecked(page._id, "canUpdate")}
-                    onChange={handlePermissionChange(page._id, "canUpdate")}
-                  />
-                </TableCell>
-
-                <TableCell>
-                  <Checkbox
-                    checked={isChecked(page._id, "canDelete")}
-                    onChange={handlePermissionChange(page._id, "canDelete")}
-                  />
-                </TableCell>
+      <Box
+        sx={{
+          boxShadow:
+            "0px 0px 2px rgba(145, 158, 171, 0.2), 0px 12px 24px -4px rgba(145, 158, 171, 0.12)",
+          borderRadius: "16px",
+          p: 2,
+          mt: 3,
+          mb: 3,
+        }}
+      >
+        <TableContainer sx={{ mb: 3 }}>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Page</TableCell>
+                <TableCell>All</TableCell>
+                <TableCell>View</TableCell>
+                <TableCell>Create</TableCell>
+                <TableCell>Update</TableCell>
+                <TableCell>Delete</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+
+            <TableBody>
+              {pages.map((page) => (
+                <TableRow key={page._id}>
+                  <TableCell>{page.name}</TableCell>
+                  <TableCell>
+                    <Checkbox
+                      checked={isAllChecked(page._id)}
+                      indeterminate={isIndeterminate(page._id)}
+                      onChange={handleSelectAllRow(page._id)}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Checkbox
+                      checked={isChecked(page._id, "canView")}
+                      onChange={handlePermissionChange(page._id, "canView")}
+                    />
+                  </TableCell>
+
+                  <TableCell>
+                    <Checkbox
+                      checked={isChecked(page._id, "canCreate")}
+                      onChange={handlePermissionChange(page._id, "canCreate")}
+                    />
+                  </TableCell>
+
+                  <TableCell>
+                    <Checkbox
+                      checked={isChecked(page._id, "canUpdate")}
+                      onChange={handlePermissionChange(page._id, "canUpdate")}
+                    />
+                  </TableCell>
+
+                  <TableCell>
+                    <Checkbox
+                      checked={isChecked(page._id, "canDelete")}
+                      onChange={handlePermissionChange(page._id, "canDelete")}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Box>
 
       {/* Submit */}
       <Button variant="contained" onClick={handleSubmit}>

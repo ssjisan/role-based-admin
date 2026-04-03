@@ -1,5 +1,4 @@
-/* eslint-disable react/no-unknown-property */
-export default function NoData() {
+export const NoData = () => {
   return (
     <div
       style={{
@@ -231,4 +230,4 @@ export default function NoData() {
       </svg>
     </div>
   );
-}
+};

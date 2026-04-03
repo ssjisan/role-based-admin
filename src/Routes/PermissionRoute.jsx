@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { DataContext } from "../DataProcessing/DataProcessing";
-import { hasPermission } from "../Components/lib/hasPermission";
+import { hasPermission } from "../lib/hasPermission";
 import Loading from "./Loading";
 
 export default function PermissionRoute() {
