@@ -2,8 +2,14 @@ import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import Icon from "../../Components/Icon";
 import View from "../../Components/User/View/View";
+import { DataContext } from "../../DataProcessing/DataProcessing";
+import { hasPermission } from "../../lib/hasPermission";
+import { useContext } from "react";
 
 export default function Users() {
+  const { auth } = useContext(DataContext);
+
+  const canCreate = hasPermission(auth?.permissions, "users", "canCreate");
   return (
     <Box>
       {/* Header */}
@@ -17,14 +23,16 @@ export default function Users() {
       >
         <Typography variant="h5">Users</Typography>
 
-        <Button
-          variant="contained"
-          component={Link}
-          to="/user-settings"
-          startIcon={<Icon name="Plus" size={20} color="#fff" />}
-        >
-          Create User
-        </Button>
+        {canCreate && (
+          <Button
+            variant="contained"
+            component={Link}
+            to="/user-settings"
+            startIcon={<Icon name="Plus" size={20} color="#fff" />}
+          >
+            Create User
+          </Button>
+        )}
       </Box>
       <View />
     </Box>

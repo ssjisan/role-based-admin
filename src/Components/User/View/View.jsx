@@ -25,8 +25,8 @@ export default function View() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
   const { auth } = useContext(DataContext);
-  const canUpdate = hasPermission(auth?.permissions, "pages", "canUpdate");
-  const canDelete = hasPermission(auth?.permissions, "pages", "canDelete");
+  const canUpdate = hasPermission(auth?.permissions, "users", "canUpdate");
+  const canDelete = hasPermission(auth?.permissions, "users", "canDelete");
   const hasAnyAction = canUpdate || canDelete;
   const navigate = useNavigate();
   // ---------------------------
@@ -162,18 +162,13 @@ export default function View() {
                   <TableCell>{formatDateTime(user?.lastLogin)}</TableCell>
 
                   {/* Actions */}
-                  <TableCell
-                    align="center"
-                    sx={{ display: "flex", gap: 1, justifyContent: "center" }}
-                  >
-                    {hasAnyAction && (
-                      <TableCell align="center">
-                        <IconButton onClick={(e) => handleOpenMenu(e, user)}>
-                          <Icon name="More" size={20} color="#919EAB" />
-                        </IconButton>
-                      </TableCell>
-                    )}
-                  </TableCell>
+                  {hasAnyAction && (
+                    <TableCell align="center">
+                      <IconButton onClick={(e) => handleOpenMenu(e, user)}>
+                        <Icon name="More" size={20} color="#919EAB" />
+                      </IconButton>
+                    </TableCell>
+                  )}
                 </TableRow>
               ))
             ) : (

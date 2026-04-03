@@ -58,8 +58,8 @@ export default function View() {
     }
   };
 
-  const canUpdate = hasPermission(auth?.permissions, "pages", "canUpdate");
-  const canDelete = hasPermission(auth?.permissions, "pages", "canDelete");
+  const canUpdate = hasPermission(auth?.permissions, "roles", "canUpdate");
+  const canDelete = hasPermission(auth?.permissions, "roles", "canDelete");
   const hasAnyAction = canUpdate || canDelete;
 
   const columns = [

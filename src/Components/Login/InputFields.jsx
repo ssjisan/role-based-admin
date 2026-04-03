@@ -140,7 +140,12 @@ export default function InputFields() {
 
       // 🔐 Force password change
       if (response?.status === 403 && response?.data?.forcePasswordChange) {
-        saveAuth(response.data);
+        saveAuth({
+          token: response.data.token,
+          user: {
+            id: response.data._id,
+          },
+        });
 
         toast.error("You must change your password");
         navigate("/password-change");
