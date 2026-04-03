@@ -8,7 +8,7 @@ import {
   Avatar,
 } from "@mui/material";
 import { useContext, useState } from "react";
-import { DataContext } from "../../DataProcessing/DataProcessing";
+import { DataContext } from "../DataProcessing/DataProcessing";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AccountPopOver() {

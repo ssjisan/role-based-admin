@@ -46,7 +46,6 @@ export default function MainRouters() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/password-change" element={<PasswordChange />} />
-
         <Route element={<PrivateRoute />}>
           <Route element={<MainLayout />}>
             <Route path="/change-password" element={<ChangePasswordForm />} />
