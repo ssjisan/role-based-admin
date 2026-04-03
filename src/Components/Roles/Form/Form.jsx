@@ -1,24 +1,23 @@
+import { useNavigate } from "react-router-dom";
+import api from "../../../api/axios";
+import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import {
   Box,
-  TextField,
   Button,
-  Typography,
+  Checkbox,
+  Stack,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Checkbox,
-  Stack,
+  TextField,
 } from "@mui/material";
-import { useParams, useNavigate } from "react-router-dom";
-import api from "../api/axios";
-import toast from "react-hot-toast";
+import PropTypes from "prop-types";
 
-export default function RoleSettings() {
-  const { id } = useParams();
+export default function Form({ id }) {
   const navigate = useNavigate();
 
   const [pages, setPages] = useState([]);
@@ -215,11 +214,14 @@ export default function RoleSettings() {
   };
 
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant="h6" mb={2}>
-        {form.id ? "Update Role" : "Create Role"}
-      </Typography>
-
+    <Box
+      sx={{
+        p: 3,
+        width: "100%",
+        maxWidth: "720px", // 👈 max width
+        mx: "auto",
+      }}
+    >
       {/* Role Form */}
       <Stack spacing={2} mb={3}>
         <TextField
@@ -314,3 +316,6 @@ export default function RoleSettings() {
     </Box>
   );
 }
+Form.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};

@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import { DataContext } from "../DataProcessing/DataProcessing";
-import { hasPermission } from "../lib/hasPermission";
-import View from "../Components/Pages/View/View";
-import Icon from "../Components/Icon";
+import { DataContext } from "../../DataProcessing/DataProcessing";
+import { hasPermission } from "../../lib/hasPermission";
+import View from "../../Components/Pages/View/View";
+import Icon from "../../Components/Icon";
 
 export default function Pages() {
   const { auth } = useContext(DataContext);

@@ -7,7 +7,7 @@ import {
   MenuItem,
   Stack,
 } from "@mui/material";
-import api from "../api/axios";
+import api from "../../api/axios";
 import toast from "react-hot-toast";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -113,17 +113,24 @@ export default function UserSettings() {
     <Box
       sx={{
         mt: 3,
-        p: 3,
-        border: "1px solid #eee",
-        borderRadius: "12px",
-        background: "#fff",
       }}
     >
       <Typography variant="h6" mb={2}>
         {form.id ? "Update User" : "Create User"}
       </Typography>
 
-      <Stack spacing={2}>
+      <Stack
+        spacing={2}
+        sx={{
+          width: "100%",
+          maxWidth: "720px",
+          mx: "auto",
+          border: "1px solid #eee",
+          borderRadius: "12px",
+          background: "#fff",
+          p: 3,
+        }}
+      >
         <TextField
           label="Name"
           value={form.name}

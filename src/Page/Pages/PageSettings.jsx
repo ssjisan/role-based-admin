@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
-import Form from "../Components/Pages/Form/Form";
+import Form from "../../Components/Pages/Form/Form";
 
 export default function PageSettings() {
   const { id } = useParams();
