@@ -17,11 +17,14 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "../../../api/axios";
 import { DataContext } from "../../../DataProcessing/DataProcessing";
+import ConfirmationModal from "../../Common/RemoveConfirmation/ConfirmationModal";
 
 export default function View() {
   const [pages, setPages] = useState([]);
   const [loading, setLoading] = useState(false);
   const { auth } = useContext(DataContext);
+  const [openConfirm, setOpenConfirm] = useState(false);
+  const [deleteItem, setDeleteItem] = useState(null);
   // 🔥 Flatten tree into table format
   const flattenPages = (data, level = 0, parentOrder = "") => {
     let result = [];
@@ -66,16 +69,16 @@ export default function View() {
     fetchPages();
   }, []);
 
-  // ❌ Delete
-  const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure you want to delete this page?")) return;
-
+  const handleDelete = async () => {
     try {
-      const { data } = await axios.delete(`/delete-page/${id}`);
+      const { data } = await axios.delete(`/delete-page/${deleteItem._id}`);
       toast.success(data.message || "Deleted successfully");
       fetchPages();
     } catch (err) {
       toast.error(err?.response?.data?.message || "Delete failed");
+    } finally {
+      setOpenConfirm(false);
+      setDeleteItem(null);
     }
   };
 
@@ -123,7 +126,8 @@ export default function View() {
       label: "Delete",
       iconName: "Delete",
       onClick: () => {
-        handleDelete(selectedPage?._id);
+        setDeleteItem(selectedPage);
+        setOpenConfirm(true);
         handleCloseMenu();
       },
       color: "error",
@@ -174,14 +178,14 @@ export default function View() {
                     <TableCell align="center">
                       <CustomChip
                         label={page.isMenu ? "Yes" : "No"}
-                        type={page.isMenu ? "info" : "error"}
+                        type={page.isMenu ? "info" : "warning"}
                       />
                     </TableCell>
 
                     <TableCell align="center">
                       <CustomChip
                         label={page.isActive ? "Active" : "Inactive"}
-                        type={page.isActive ? "info" : "error"}
+                        type={page.isActive ? "success" : "error"}
                       />
                     </TableCell>
 
@@ -211,6 +215,13 @@ export default function View() {
         anchorEl={anchorEl}
         onClose={handleCloseMenu}
         menuItems={menuItems}
+      />
+      <ConfirmationModal
+        open={openConfirm}
+        title="Delete Page"
+        itemName={deleteItem?.name}
+        onClose={() => setOpenConfirm(false)}
+        onConfirm={handleDelete}
       />
     </Box>
   );

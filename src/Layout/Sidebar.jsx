@@ -15,7 +15,6 @@ import {
   AccordionDetails,
 } from "@mui/material";
 
-import { ArrowDown, Bullet } from "../assets/IconSet";
 import { Logo } from "../assets/Logo";
 import Icon from "../Components/Icon";
 import { DataContext } from "../DataProcessing/DataProcessing";
@@ -139,7 +138,9 @@ function Sidebar(props) {
                   }}
                 >
                   <AccordionSummary
-                    expandIcon={<ArrowDown color={"#637381"} size={"16px"} />}
+                    expandIcon={
+                      <Icon name="arrowdown" color={"#637381"} size={"16px"} />
+                    }
                     sx={{
                       minHeight: "32px",
                       backgroundColor: isSectionActive
@@ -205,7 +206,8 @@ function Sidebar(props) {
                               }}
                             >
                               <ListItemIcon sx={{ minWidth: "24px" }}>
-                                <Bullet
+                                <Icon
+                                  name="bullet"
                                   color={active ? "#060415" : "#637381"}
                                   size={active ? 12 : 10}
                                 />

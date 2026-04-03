@@ -58,9 +58,9 @@ import {
   PageGroup,
   Plus,
   Product,
-  PlusIcon,
   Package,
   PreOrder,
+  PlusRounded,
 } from "./IconSet/P";
 import { Role, Remove } from "./IconSet/R";
 import {
@@ -160,7 +160,7 @@ const icons = {
   // Icon Starts with "P"
   plus: Plus,
   product: Product,
-  plusicon: PlusIcon,
+  plusrounded: PlusRounded,
   package: Package,
   preorder: PreOrder,
   pagegroup: PageGroup,

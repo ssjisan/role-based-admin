@@ -16,17 +16,17 @@ import {
 } from "@mui/material";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../DataProcessing/DataProcessing";
-import { Alert, EyeOff, EyeOn } from "../../assets/IconSet";
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import toast from "react-hot-toast";
+import Icon from "../Icon";
 
 export default function InputFields() {
   const forBelow776 = useMediaQuery("(max-width:776px)");
   const { showPassword, handleClickShowPassword, handleMouseDownPassword } =
     useContext(DataContext);
 
-  const { auth, setAuth } = useContext(DataContext);
+  const { setAuth } = useContext(DataContext);
 
   const [lockSeconds, setLockSeconds] = useState(0);
   const [email, setEmail] = useState("");
@@ -180,7 +180,8 @@ export default function InputFields() {
               minHeight: "48px",
             }}
           >
-            <Alert size="24" color="#FF5630" />
+            <Icon name="alert" color="#FF5630" size="24px" />
+
             <Typography variant="body2" sx={{ color: "#FF5630", ml: 1 }}>
               {errorMessage}
             </Typography>
@@ -220,9 +221,9 @@ export default function InputFields() {
                   edge="end"
                 >
                   {showPassword ? (
-                    <EyeOn color="#918EAF" size="24px" />
+                    <Icon name="eyeon" color="#918EAF" size="24px" />
                   ) : (
-                    <EyeOff color="#918EAF" size="24px" />
+                    <Icon name="eyeoff" color="#918EAF" size="24px" />
                   )}
                 </IconButton>
               </InputAdornment>

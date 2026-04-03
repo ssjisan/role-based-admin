@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import Modal from "@mui/material/Modal";
 import { Box, Button, Stack, Typography } from "@mui/material";
-import { Warning } from "../../../assets/IconSet";
+import Icon from "../../Icon";
 
 export default function ConfirmationModal({
   open,
@@ -44,7 +44,7 @@ export default function ConfirmationModal({
           alignItems={"center"}
           sx={{ p: "24px 16px" }}
         >
-          <Warning size="48px" color="#dc3545" />
+          <Icon name="warning" size="48px" color="#dc3545" />
           <Typography variant="body1" sx={{ textAlign: "center" }}>
             {message || (
               <>

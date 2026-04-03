@@ -82,7 +82,7 @@ export const PageGroup = ({ color, size }) => {
     </div>
   );
 };
-export const Plus = ({ color, size }) => {
+export const PlusRounded = ({ color, size }) => {
   return (
     <div
       style={{
@@ -153,7 +153,7 @@ export const Product = ({ color, size }) => {
     </div>
   );
 };
-export const PlusIcon = ({ color, size }) => {
+export const Plus = ({ color, size }) => {
   return (
     <div
       style={{
@@ -266,7 +266,7 @@ PageGroup.propTypes = {
   color: PropTypes.string.isRequired,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
-Plus.propTypes = {
+PlusRounded.propTypes = {
   color: PropTypes.string.isRequired,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
@@ -274,7 +274,7 @@ Product.propTypes = {
   color: PropTypes.string.isRequired,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };
-PlusIcon.propTypes = {
+Plus.propTypes = {
   color: PropTypes.string.isRequired,
   size: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 };

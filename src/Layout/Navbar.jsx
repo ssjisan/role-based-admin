@@ -1,6 +1,6 @@
 import { AppBar, IconButton, Stack, Toolbar } from "@mui/material";
-import { BurgerMenu } from "../assets/IconSet";
 import AccountPopOver from "./Common/AccountPopOver";
+import Icon from "../Components/Icon";
 
 const drawerWidth = 260;
 // eslint-disable-next-line
@@ -36,7 +36,7 @@ export default function Navbar({ handleDrawerToggle }) {
           onClick={handleDrawerToggle}
           sx={{ mr: 2, display: { lg: "none" } }}
         >
-          <BurgerMenu color="#031E21" size={24} />
+          <Icon name="burgermenu" color="#031E21" size={24} />
         </IconButton>
         <Stack direction="row" justifyContent="center">
           <AccountPopOver />

@@ -12,7 +12,8 @@ import {
 } from "@mui/material";
 import { useContext, useState } from "react";
 import { DataContext } from "../../DataProcessing/DataProcessing";
-import { Alert, EyeOff, EyeOn } from "../../assets/IconSet";
+import Icon from "../Icon";
+
 import { useNavigate } from "react-router-dom";
 import axios from "../../api/axios";
 import toast from "react-hot-toast";
@@ -110,7 +111,7 @@ export default function PasswordChangeFields() {
               minHeight: "48px",
             }}
           >
-            <Alert size="24" color="#FF5630" />
+            <Icon name="alert" color="#FF5630" size="24px" />
             <Typography variant="body2" sx={{ color: "#FF5630", ml: 1 }}>
               {errorMessage}
             </Typography>
@@ -132,9 +133,9 @@ export default function PasswordChangeFields() {
                   edge="end"
                 >
                   {showPassword ? (
-                    <EyeOn color="#918EAF" size="24px" />
+                    <Icon name="eyeon" color="#918EAF" size="24px" />
                   ) : (
-                    <EyeOff color="#918EAF" size="24px" />
+                    <Icon name="eyeoff" color="#918EAF" size="24px" />
                   )}
                 </IconButton>
               </InputAdornment>
@@ -158,9 +159,9 @@ export default function PasswordChangeFields() {
                   edge="end"
                 >
                   {showNewPassword ? (
-                    <EyeOn color="#918EAF" size="24px" />
+                    <Icon name="eyeon" color="#918EAF" size="24px" />
                   ) : (
-                    <EyeOff color="#918EAF" size="24px" />
+                    <Icon name="eyeoff" color="#918EAF" size="24px" />
                   )}
                 </IconButton>
               </InputAdornment>
@@ -183,9 +184,9 @@ export default function PasswordChangeFields() {
                   edge="end"
                 >
                   {showConfirmPassword ? (
-                    <EyeOn color="#918EAF" size="24px" />
+                    <Icon name="eyeon" color="#918EAF" size="24px" />
                   ) : (
-                    <EyeOff color="#918EAF" size="24px" />
+                    <Icon name="eyeoff" color="#918EAF" size="24px" />
                   )}
                 </IconButton>
               </InputAdornment>

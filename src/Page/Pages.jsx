@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { DataContext } from "../DataProcessing/DataProcessing";
 import { hasPermission } from "../lib/hasPermission";
 import View from "../Components/Pages/View/View";
+import Icon from "../Components/Icon";
 
 export default function Pages() {
   const { auth } = useContext(DataContext);
@@ -31,6 +32,7 @@ export default function Pages() {
             color="primary"
             component={Link}
             to="/page-settings"
+            startIcon={<Icon name="Plus" size={20} color="#fff" />}
           >
             Create Page
           </Button>
