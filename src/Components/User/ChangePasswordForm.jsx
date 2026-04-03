@@ -8,15 +8,15 @@ import {
   OutlinedInput,
   Typography,
 } from "@mui/material";
-import { EyeOff, EyeOn } from "../../assets/IconSet";
 import { useContext, useState } from "react";
 import axios from "../../api/axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { DataContext } from "../../DataProcessing/DataProcessing";
+import Icon from "../Icon";
 
 export default function ChangePasswordForm() {
-  const { auth, setAuth } = useContext(DataContext);
+  const { setAuth } = useContext(DataContext);
 
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -112,9 +112,9 @@ export default function ChangePasswordForm() {
                   edge="end"
                 >
                   {showOldPassword ? (
-                    <EyeOff color="#918EAF" size="24px" />
+                    <Icon name="eyeoff" color="#918EAF" size="24px" />
                   ) : (
-                    <EyeOn color="#918EAF" size="24px" />
+                    <Icon name="eyeon" color="#918EAF" size="24px" />
                   )}
                 </IconButton>
               </InputAdornment>
@@ -136,9 +136,9 @@ export default function ChangePasswordForm() {
                   edge="end"
                 >
                   {showNewPassword ? (
-                    <EyeOff color="#918EAF" size="24px" />
+                    <Icon name="eyeoff" color="#918EAF" size="24px" />
                   ) : (
-                    <EyeOn color="#918EAF" size="24px" />
+                    <Icon name="eyeon" color="#918EAF" size="24px" />
                   )}
                 </IconButton>
               </InputAdornment>
@@ -160,9 +160,9 @@ export default function ChangePasswordForm() {
                   edge="end"
                 >
                   {showConfirmPassword ? (
-                    <EyeOff color="#918EAF" size="24px" />
+                    <Icon name="eyeoff" color="#918EAF" size="24px" />
                   ) : (
-                    <EyeOn color="#918EAF" size="24px" />
+                    <Icon name="eyeon" color="#918EAF" size="24px" />
                   )}
                 </IconButton>
               </InputAdornment>

@@ -16,6 +16,7 @@ import Users from "../Page/Users/Users";
 import UserSettings from "../Page/Users/UserSettings";
 import PermissionRoute from "./PermissionRoute";
 import Backup from "../Page/Backup";
+import ChangePasswordForm from "../Components/User/ChangePasswordForm";
 
 export default function MainRouters() {
   const { loading } = useContext(DataContext);
@@ -47,8 +48,9 @@ export default function MainRouters() {
         <Route path="/password-change" element={<PasswordChange />} />
 
         <Route element={<PrivateRoute />}>
-          <Route element={<PermissionRoute />}>
-            <Route element={<MainLayout />}>
+          <Route element={<MainLayout />}>
+            <Route path="/change-password" element={<ChangePasswordForm />} />
+            <Route element={<PermissionRoute />}>
               <Route path="/" element={<Dashboard />} />
               <Route path="/pages" element={<Pages />} />
               <Route path="/page-settings" element={<PageSettings />} />

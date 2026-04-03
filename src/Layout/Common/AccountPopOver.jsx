@@ -123,7 +123,7 @@ export default function AccountPopOver() {
             </Typography>
           </Box>
           <Divider variant="middle" sx={{ borderStyle: "dashed" }} />
-          <Link to="/change_password" style={linkStyle}>
+          <Link to="/change-password" style={linkStyle}>
             <MenuItem
               sx={{
                 mt: "8px",
